@@ -1,7 +1,5 @@
 package DataStructure;
 
-import java.util.EmptyStackException;
-
 /**
  * Created by oeno on 2017. 4. 16..
  */
@@ -9,7 +7,8 @@ public class Stack<T> {
     private Node top;
 
     public Stack(T data) {
-        this.top = new Node(data);
+        Node node = new Node(data);
+        this.top = node;
     }
 
     public Stack() {
@@ -35,23 +34,21 @@ public class Stack<T> {
         }
     }
 
-    public T pop() {
+    public T peek() {
         if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        else {
-            T data = (T)top.getData();
-            top = top.getNext();
-            return data;
+            return null;
+        } else {
+            return (T)top.getData();
         }
     }
 
-    public T peek() {
+    public T pop() {
         if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        else {
-            return (T)top.getData();
+            return null;
+        } else {
+            T data = peek();
+            top = top.getNext();
+            return data;
         }
     }
 

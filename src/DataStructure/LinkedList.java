@@ -51,6 +51,6 @@ public class LinkedList<T> {
                 return 1;
             }
         }
-
+        return 0;
     }
 }

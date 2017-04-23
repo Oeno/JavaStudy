@@ -1,59 +1,59 @@
 package DataStructure;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Created by oeno on 2017. 4. 16..
  */
-public class Stack<T> {
-    private Node top;
+public class Stack<T extends Objects> {
+    private int top;
+    private List<T> list;
 
-    public Stack(T data) {
-        Node node = new Node(data);
-        this.top = node;
-    }
-
-    public Stack() {
-        this.top = null;
+    public Stack(int size, T data) {
+        list = new ArrayList();
+        list.add(data);
+        top = 0;
     }
 
     public boolean isEmpty() {
-        if (top == null)
+        if (list.size() == 0)
             return true;
         else
             return false;
     }
 
-    public int push(T data) {
+    public void push(T data) {
         try {
-            Node node = new Node(data);
-            node.setNext(top);
-            this.top = node;
-            return 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 1;
+            list.add(data);
+            this.top++;
+        } catch (StackOverflowError e1) {
+            e1.printStackTrace();
+        } catch (IndexOutOfBoundsException e2) {
+            e2.printStackTrace();
         }
     }
 
     public T peek() {
         if (isEmpty()) {
-            return null;
+
+            throw new NullPointerException();
         } else {
-            return (T)top.getData();
+            return list.get(top);
         }
     }
 
     public T pop() {
         if (isEmpty()) {
-            return null;
+            throw new NullPointerException();
         } else {
-            T data = peek();
-            top = top.getNext();
-            return data;
+            return list.get(top--);
         }
     }
 
     public void clear() {
-        top = null;
+        list.clear();
     }
 
 }

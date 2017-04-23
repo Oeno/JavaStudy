@@ -1,25 +1,25 @@
 package DataStructure;
 
-import java.util.PrimitiveIterator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by oeno on 2017. 4. 16..
  */
-public class Queue<T> {
-    private Node head;
-    private Node tail;
+public class Queue<T extends Objects> {
+    private List<T> list;
+    private int front;
+    private int rear;
 
     public Queue(T data) {
-        Node node = new Node(data);
-        head = tail = node;
-    }
-
-    public Queue() {
-        head = tail = null;
+        list = new ArrayList();
+        list.add(data);
+        front = rear = 0;
     }
 
     public boolean isEmpty() {
-        if (head == null) {
+        if (list.size() == 0) {
             return true;
         } else {
             return false;
@@ -28,15 +28,14 @@ public class Queue<T> {
 
     public int add(T data) {
         try {
-            Node node = new Node(data);
+            list.add(data);
 
             if (isEmpty()) {
-                head = tail = node;
+                front = rear = 0;
                 return 0;
             }
             else {
-                tail.setNext(node);
-                tail = node;
+                rear++;
                 return 0;
             }
         } catch (Exception e) {
@@ -49,7 +48,7 @@ public class Queue<T> {
         if (isEmpty()) {
             return null;
         } else {
-            return (T)head.getData();
+            return list.get(front);
         }
     }
 
@@ -58,7 +57,7 @@ public class Queue<T> {
             return null;
         }   else {
             T data = peek();
-            head = head.getNext();
+            front++;
             return data;
         }
     }

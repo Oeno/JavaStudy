@@ -9,6 +9,8 @@ import java.util.List;
 public class Member extends Person{
     private List<String> tasks;
 
+    int[] num = new int[3];
+    int re = num.length;
     public Member(String name) {
         super(name);
         tasks = new ArrayList();

@@ -10,14 +10,11 @@ public class TCP extends Team{
         super("TCP");
     }
 
-    public static TCP getInstance() {
+    public synchronized static TCP getInstance() {
         if (instance == null) {
-            synchronized (TCP.class) {
-                if (instance == null) {
-                    instance = new TCP();
-                }
-            }
+            instance = new TCP();
         }
+
         return instance;
     }
 

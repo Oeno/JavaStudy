@@ -1,5 +1,7 @@
 package Extends;
 
+import java.util.Arrays;
+
 /**
  * Created by oeno on 2017. 4. 23..
  */
@@ -58,6 +60,8 @@ public class Person {
     @Override
     public int hashCode() {
         String s = "" + id + name;
+
+
         return s.hashCode();
     }
 }

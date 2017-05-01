@@ -1,6 +1,7 @@
 package Extends;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -66,9 +67,10 @@ public class Team {
     }
 
     @Override
-    public int hashCode() {
-        String s = "" + teamId + teamName + teamMembers.hashCode();
-        return s.hashCode();
+    public int hashCode(){
+        Object[] objs = {getTeamId(), getTeamName(), getTeamMembers()};
+
+        return Arrays.hashCode(objs);
     }
 
     public void DoConference(List<Member> memberList, List<String> taskList) {

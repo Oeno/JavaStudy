@@ -1,0 +1,9 @@
+// Add Java plugin
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceSets {
+    main {
+        output.classesDir "$buildDir/classes"
+    }
+}

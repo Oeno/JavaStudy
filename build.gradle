@@ -2,6 +2,14 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:21.0'
+}
+
 sourceSets {
     main {
         output.classesDir "$buildDir/classes"

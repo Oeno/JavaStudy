@@ -1,6 +1,6 @@
 package Extends;
 
-import java.util.Arrays;
+import com.google.common.base.Objects;
 
 /**
  * Created by oeno on 2017. 4. 23..
@@ -9,7 +9,7 @@ public class Person {
     private int id;
     private String name;
     // 피로도
-    private int fatigue;
+    protected int fatigue;
 
 
     // To increase id from value '1'
@@ -37,31 +37,22 @@ public class Person {
         return fatigue;
     }
 
-    public void increaseFatigue() {
-        fatigue++;
-    }
-
-    public void decraseFatigue() {
-        fatigue--;
+    public void rest() {
+        if (fatigue > 0) {
+            fatigue--;
+        } else {
+            System.out.println("I'm not tired to rest");
+        }
     }
 
     @Override
     public boolean equals(Object obj) {
         Person person = (Person) obj;
-
-        if (id == person.id &&
-                name.equals(person.name)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (id == person.id) && name.equals(person.name) && (fatigue == person.fatigue);
     }
 
     @Override
     public int hashCode() {
-        String s = "" + id + name;
-
-
-        return s.hashCode();
+        return Objects.hashCode(id, name, fatigue);
     }
 }

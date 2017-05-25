@@ -44,10 +44,10 @@ public class LinkedList<T> {
         Node node = new Node(data);
         Node count = head;
 
-        for (int i=0; i<index; i++) {
+        for (int i = 0; i < index; i++) {
             count = count.getNext();
             if (count == null) {
-                System.out.println("Index is not exist!");
+                System.out.println("Index is not exist! please check again.");
                 return 1;
             }
         }

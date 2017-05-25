@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Created by oeno on 2017. 4. 16..
  */
-public class Stack<T extends Objects> {
+public class Stack<T extends Object> {
     private int top;
     private List<T> list;
 
